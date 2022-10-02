@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function EditForm({editTodo}) {
+function EditForm({editTodo, notShowEditForm,ShowEditFormChild }) {
     const [value,setValue] = useState("")
 
     const editPost = (e) => {
@@ -10,8 +10,8 @@ function EditForm({editTodo}) {
     }
 
     return (
-        <div className='edit-modal'>
-            <div className="edit-modal-content p-3">
+        <div className='edit-modal' onClick={notShowEditForm}>
+            <div className="edit-modal-content p-3" onClick={ShowEditFormChild }>
                 <form onSubmit= {editPost}>
                     <input
                     className='form-control mb-3' 

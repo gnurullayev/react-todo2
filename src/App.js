@@ -66,33 +66,49 @@ function App() {
     addLocolStorage (newArr)
   }
 
+  const notShowEditForm = () => {
+    setModalShow(false)
+  }
+
+  const ShowEditFormChild = (evt) => {
+    evt.stopPropagation()
+    setModalShow(true)
+  }
+
 
 
   // if(isModalShow) return 
 
   return (
     <>
-      {
-        isModalShow 
-        ? (
-          <EditForm editTodo = {editTodo}/>
-        )
-        :(
-          <div className="App">
-          <div className="container my-5">
-            <div className="row justify-content-center justify-content-md-between gy-4">
-                <div className="col-md-6 ">
-                  <FormList addPost = {addPost} clearList ={clearList}/>
-                </div>
-    
-                <div className="col-md-6">
-                  <TodoList todos = {todos} deletTodo = {deleteItem} compateHanler = {compateHanler} ShowEditForm ={ShowEditForm}/>
-                </div>
+
+      <div className="App">
+        <div className="container my-5">
+          {
+            isModalShow 
+            ?(
+              <EditForm 
+              notShowEditForm = {notShowEditForm}
+              ShowEditFormChild  = {ShowEditFormChild }
+              editTodo = {editTodo} 
+              />
+            )
+            :
+            null 
+          }
+
+          <div className="row justify-content-center justify-content-md-between gy-4">
+            <div className="col-md-6 ">
+              <FormList addPost = {addPost} clearList ={clearList}/>
+            </div>
+
+            <div className="col-md-6">
+              <TodoList todos = {todos} deletTodo = {deleteItem} compateHanler = {compateHanler} ShowEditForm ={ShowEditForm}/>
             </div>
           </div>
         </div>
-        )
-      }
+      </div>
+
     </>
    
   );
